@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drama Hub — Koreya Seriallari O'zbek tilida</title>
+<meta name="description" content="Eng yaxshi Koreya seriallarini o'zbek tilida tomosha qiling. HD sifat, bepul!">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3750617152736872" crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   RESET & DESIGN TOKENS
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:       #0a0c12;
+  --ink2:      #10141f;
+  --ink3:      #161c2e;
+  --panel:     #1a2035;
+  --panel2:    #1f2840;
+  --line:      rgba(255,255,255,0.07);
+  --line2:     rgba(255,255,255,0.13);
+  --rose:      #f43f6e;
+  --rose2:     #fb7185;
+  --amber:     #f59e0b;
+  --sky:       #38bdf8;
+  --mint:      #34d399;
+  --tg:        #2aabee;
+  --tg-dark:   #1585c4;
+  --text:      #e2e8f2;
+  --sub:       #8898b4;
+  --dim:       #4a5568;
+  --r:         14px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Cinematic grain */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: #2a3555; border-radius: 2px; }
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+.navbar {
+  position: sticky; top: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 0 clamp(16px, 4vw, 52px);
+  height: 64px;
+  background: rgba(10,12,18,0.9);
+  backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: #fff;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem; letter-spacing: -0.2px;
+  flex-shrink: 0;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, #f43f6e, #f97316);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 0 22px rgba(244,63,110,0.45);
+}
+.nav-logo em { color: var(--rose2); font-style: italic; }
+
+.nav-center {
+  flex: 1; max-width: 340px;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel); border: 1px solid var(--line2);
+  border-radius: 30px; padding: 9px 18px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.nav-center:focus-within {
+  border-color: rgba(244,63,110,0.4);
+  box-shadow: 0 0 0 3px rgba(244,63,110,0.08);
+}
+.nav-center input {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-family: inherit; font-size: 0.84rem;
+}
+.nav-center input::placeholder { color: var(--dim); }
+.nav-search-icon { color: var(--dim); font-size: 0.88rem; flex-shrink: 0; }
+
+.nav-tg-btn {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--tg), var(--tg-dark));
+  color: #fff; text-decoration: none;
+  padding: 9px 18px; border-radius: 30px;
+  font-size: 0.8rem; font-weight: 600;
+  box-shadow: 0 4px 16px rgba(42,171,238,0.35);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-tg-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(42,171,238,0.5); }
+.nav-tg-btn svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+
+@media (max-width: 600px) { .nav-tg-btn { display: none; } }
+
+/* ═══════════════════════════════════════════
+   HERO — CINEMATIC BANNER
+═══════════════════════════════════════════ */
+
+/* Hero 3-qismli layout: [Reklama] [Matn] [Reklama] */
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 100vw;
+}
+.hero-side-ad {
+  flex-shrink: 0;
+  width: 160px;
+  align-self: stretch;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+  border: 1px dashed rgba(244,63,110,0.18);
+  position: relative;
+  z-index: 1;
+}
+.hero-side-ad.left  { border-radius: 0 var(--r) var(--r) 0; border-left: none; }
+.hero-side-ad.right { border-radius: var(--r) 0 0 var(--r); border-right: none; }
+.hero-side-ad ins { display: block; width: 160px; height: 160px; }
+.hero-side-ad-placeholder {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 5px; color: rgba(244,63,110,0.35); font-size: 0.65rem; text-align: center; padding: 10px;
+  user-select: none;
+}
+/* Faqat katta ekranda ko'rinadi */
+@media (min-width: 900px) {
+  .hero-side-ad { display: flex; }
+}
+
+.hero {
+  flex: 1;
+  position: relative; overflow: hidden;
+  padding: clamp(28px, 5vw, 48px) clamp(16px, 4vw, 40px);
+  text-align: center;
+}
+/* Diagonal mesh background */
+.hero-mesh {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% -10%, rgba(244,63,110,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 85% 60%, rgba(249,115,22,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 10% 50%, rgba(56,189,248,0.07) 0%, transparent 60%);
+}
+.hero-lines {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -35deg,
+    transparent 0px,
+    transparent 48px,
+    rgba(255,255,255,0.018) 48px,
+    rgba(255,255,255,0.018) 49px
+  );
+}
+.hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(244,63,110,0.3), rgba(56,189,248,0.15), transparent);
+}
+
+.hero-badge {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(244,63,110,0.1); border: 1px solid rgba(244,63,110,0.22);
+  border-radius: 30px; padding: 5px 16px 5px 10px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 1.2px;
+  color: #fda4af; text-transform: uppercase; margin-bottom: 22px;
+}
+.hero-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--rose2);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+.hero h1 {
+  position: relative; z-index: 1;
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 6.5vw, 5rem);
+  font-weight: 400; line-height: 1.05; letter-spacing: -1px;
+  color: #fff; margin-bottom: 18px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, #f43f6e, #fb923c 50%, #fbbf24);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  position: relative; z-index: 1;
+  color: var(--sub); font-size: clamp(0.88rem, 1.4vw, 1.05rem);
+  max-width: 480px; margin: 0 auto 40px; line-height: 1.7; font-weight: 400;
+}
+
+.hero-kpis {
+  position: relative; z-index: 1;
+  display: flex; justify-content: center; gap: clamp(24px, 5vw, 72px); flex-wrap: wrap;
+}
+.kpi { text-align: center; }
+.kpi-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem; color: #fff; line-height: 1; display: block;
+}
+.kpi-lbl { font-size: 0.68rem; color: var(--dim); margin-top: 4px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ═══════════════════════════════════════════
+   AD BANNERS
+═══════════════════════════════════════════ */
+.ad-banner {
+  margin: 0 clamp(16px, 4vw, 52px);
+  background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+  border: 1px dashed rgba(244,63,110,0.18);
+  border-radius: var(--r); min-height: 90px;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.ad-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  color: rgba(244,63,110,0.35); font-size: 0.72rem;
+  text-align: center; padding: 14px; user-select: none;
+}
+.ad-label {
+  font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+  background: rgba(244,63,110,0.1); padding: 3px 10px; border-radius: 20px;
+}
+.ad-banner ins { display: block; width: 100%; }
+
+/* ═══════════════════════════════════════════
+   EXTRA AD SLOTS
+═══════════════════════════════════════════ */
+
+/* Mobile filter osti banner */
+.mobile-filter-ad {
+  display: none;
+  margin: 0 16px 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+  border: 1px dashed rgba(244,63,110,0.15);
+}
+@media (max-width: 768px) {
+  .mobile-filter-ad { display: block; }
+}
+
+/* Mobile post-grid banner */
+.mobile-postgrid-ad {
+  display: none;
+  margin: 0 16px 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+  border: 1px dashed rgba(244,63,110,0.15);
+}
+@media (max-width: 768px) {
+  .mobile-postgrid-ad { display: block; }
+}
+
+/* Desktop inter-footer 728x90 */
+.desktop-inter-footer-ad {
+  display: none;
+  margin: 0 clamp(16px,2vw,32px) 20px;
+  border-radius: var(--r);
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+  border: 1px dashed rgba(244,63,110,0.15);
+  align-items: center; justify-content: center;
+}
+@media (min-width: 769px) {
+  .desktop-inter-footer-ad { display: flex; min-height: 90px; }
+}
+
+/* TV extra leaderboard */
+.tv-extra-leaderboard { display: none; }
+@media (min-width: 1920px) {
+  .tv-extra-leaderboard { display: flex !important; }
+}
+
+/* ═══════════════════════════════════════════
+   FILTER BAR
+═══════════════════════════════════════════ */
+.filter-section {
+  padding: 32px clamp(16px, 4vw, 52px) 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+  max-width: 1440px; margin: 0 auto;
+}
+.section-title {
+  font-size: 0.92rem; font-weight: 700; color: #fff;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::before {
+  content: ''; width: 3px; height: 18px;
+  background: linear-gradient(180deg, var(--rose), #f97316);
+  border-radius: 2px; flex-shrink: 0;
+}
+
+.filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.fpill {
+  padding: 7px 16px; border-radius: 30px;
+  border: 1px solid var(--line2);
+  background: var(--panel); color: var(--sub);
+  cursor: pointer; font-size: 0.77rem; font-weight: 500;
+  transition: all .2s; font-family: inherit; line-height: 1;
+}
+.fpill:hover { border-color: rgba(244,63,110,0.4); color: #fda4af; background: var(--panel2); }
+.fpill.active {
+  background: linear-gradient(135deg, var(--rose), #f97316);
+  border-color: transparent; color: #fff;
+  box-shadow: 0 4px 18px rgba(244,63,110,0.38);
+}
+
+/* ═══════════════════════════════════════════
+   PAGE LAYOUT
+═══════════════════════════════════════════ */
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr min(272px, 26vw);
+  max-width: 1440px; margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 52px);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+/* ── DESKTOP WIDE LAYOUT: left rail + content + right sidebar ── */
+@media (min-width: 1280px) {
+  .page-layout {
+    max-width: 1800px;
+    grid-template-columns: 160px 1fr min(272px, 22vw) 160px;
+    padding: 0 clamp(16px, 2vw, 32px);
+    gap: 0;
+  }
+  .sidebar { grid-column: 3; }
+}
+@media (min-width: 1600px) {
+  .page-layout {
+    grid-template-columns: 200px 1fr min(300px, 20vw) 200px;
+  }
+}
+
+/* ── LEFT AD RAIL ── */
+.ad-rail-left {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .ad-rail-left {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    padding: 22px 12px 72px 0;
+    grid-column: 1;
+    position: sticky; top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+  }
+}
+
+/* ── RIGHT AD RAIL (extra column after sidebar) ── */
+.ad-rail-right {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .ad-rail-right {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    padding: 22px 0 72px 12px;
+    grid-column: 4;
+    position: sticky; top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+  }
+}
+
+/* ── RAIL AD UNIT STYLES ── */
+.rail-ad {
+  background: var(--ink3);
+  border: 1px dashed rgba(244,63,110,0.18);
+  border-radius: var(--r);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+  width: 160px;
+}
+@media (min-width: 1600px) {
+  .rail-ad { width: 200px; }
+}
+.rail-ad-160x600 { height: 600px; }
+.rail-ad-160x320 { height: 320px; }
+.rail-ad-160x160 { height: 160px; }
+
+/* ── WIDE HERO LEADERBOARD (970×90) on large screens ── */
+@media (min-width: 1280px) {
+  .hero-leaderboard-wide {
+    display: flex !important;
+  }
+  .hero-leaderboard-standard {
+    display: none !important;
+  }
+}
+.hero-leaderboard-wide {
+  display: none;
+  margin: 18px clamp(16px,2vw,32px);
+  min-height: 90px;
+  background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+  border: 1px dashed rgba(244,63,110,0.18);
+  border-radius: var(--r);
+  align-items: center; justify-content: center; overflow: hidden;
+}
+
+/* ── BILLBOARD AD above footer (970×250) desktop only ── */
+.billboard-ad {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .billboard-ad {
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 clamp(16px,2vw,32px) 28px;
+    min-height: 250px;
+    background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+    border: 1px dashed rgba(244,63,110,0.18);
+    border-radius: var(--r); overflow: hidden;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   TV LAYOUT (1920px+) — 4K / Smart TV
+═══════════════════════════════════════════ */
+@media (min-width: 1920px) {
+
+  /* Navbar kattaroq */
+  .navbar {
+    height: 80px;
+    padding: 0 60px;
+    font-size: 1.1rem;
+  }
+  .nav-logo { font-size: 1.5rem; gap: 12px; }
+  .nav-logo-mark { width: 48px; height: 48px; font-size: 1.5rem; border-radius: 14px; }
+  .nav-center input { font-size: 1rem; padding: 12px 20px; }
+  .nav-tg-btn { font-size: 1rem; padding: 12px 24px; }
+
+  /* Hero — yon reklamalar kengroq */
+  .hero-side-ad { width: 300px; }
+  .hero-side-ad ins { width: 300px; height: 250px; }
+  .hero h1 { font-size: clamp(3rem, 4vw, 5rem); }
+  .hero p  { font-size: 1.15rem; max-width: 680px; }
+  .kpi-val { font-size: 2.4rem; }
+
+  /* Leaderboard kengroq */
+  .hero-leaderboard-wide {
+    display: flex !important;
+    min-height: 120px;
+    margin: 24px 60px;
+  }
+
+  /* Page layout — 6 ustunli grid:
+     [AdL1][AdL2] [Kontent] [Sidebar] [AdR1][AdR2] */
+  .page-layout {
+    max-width: 100%;
+    grid-template-columns: 240px 240px 1fr 300px 240px 240px;
+    padding: 0 20px;
+    gap: 0;
+  }
+  .main-content  { grid-column: 3; }
+  .sidebar       { grid-column: 4; }
+  .ad-rail-left  { grid-column: unset; display: none; }
+  .ad-rail-right { grid-column: unset; display: none; }
+  .sidebar      { grid-column: 4; }
+
+  /* Chap rail — 2 ustun */
+  .ad-rail-left {
+    display: contents;
+  }
+  .tv-ad-rail-l1 {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    padding: 24px 10px 80px 20px;
+    grid-column: 1;
+    position: sticky; top: 88px;
+    max-height: calc(100vh - 110px);
+    overflow: hidden;
+  }
+  .tv-ad-rail-l2 {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    padding: 24px 10px 80px 10px;
+    grid-column: 2;
+    position: sticky; top: 88px;
+    max-height: calc(100vh - 110px);
+    overflow: hidden;
+  }
+
+  /* O'ng rail — 2 ustun */
+  .ad-rail-right {
+    display: contents;
+  }
+  .tv-ad-rail-r1 {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    padding: 24px 10px 80px 10px;
+    grid-column: 5;
+    position: sticky; top: 88px;
+    max-height: calc(100vh - 110px);
+    overflow: hidden;
+  }
+  .tv-ad-rail-r2 {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    padding: 24px 20px 80px 10px;
+    grid-column: 6;
+    position: sticky; top: 88px;
+    max-height: calc(100vh - 110px);
+    overflow: hidden;
+  }
+
+  /* Rail ad o'lchamlari TV uchun */
+  .tv-rail-ad {
+    background: var(--ink3);
+    border: 1px dashed rgba(244,63,110,0.18);
+    border-radius: var(--r);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+    width: 220px;
+  }
+  .tv-rail-600 { height: 600px; }
+  .tv-rail-300 { height: 300px; }
+  .tv-rail-250 { height: 250px; }
+  .tv-rail-160 { height: 160px; }
+
+  /* Karta grid — kattaroq, ko'proq ustun */
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+    padding: 28px 0 80px;
+    align-items: stretch;
+  }
+  .card-thumb { height: 260px; }
+
+  /* Billboard kattaroq + TV extra leaderboard */
+  .billboard-ad {
+    min-height: 300px;
+    margin: 0 60px 36px;
+  }
+  .tv-extra-leaderboard {
+    display: flex !important;
+    min-height: 120px;
+    margin: 0 60px 24px;
+    background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+    border: 1px dashed rgba(244,63,110,0.18);
+    border-radius: var(--r);
+    align-items: center; justify-content: center; overflow: hidden;
+  }
+
+  /* Footer kattaroq */
+  .footer { font-size: 1rem; padding: 28px 60px; }
+
+  /* Sidebar kartalar */
+  .sidebar { padding: 24px 16px 80px 16px; }
+}
+
+/* TV uchun kichik rail adlar yashiriladi (faqat TV da ko'rinadi) */
+.tv-ad-rail-l1, .tv-ad-rail-l2,
+.tv-ad-rail-r1, .tv-ad-rail-r2 { display: none; }
+@media (min-width: 1920px) {
+  .tv-ad-rail-l1, .tv-ad-rail-l2,
+  .tv-ad-rail-r1, .tv-ad-rail-r2 { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+}
+/* ═══════════════════════════════════════════
+   CARD GRID
+═══════════════════════════════════════════ */
+.grid {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 22px 0 72px;
+}
+
+/* ═══════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════ */
+.card {
+  background: var(--ink3);
+  border: 1px solid var(--line);
+  border-radius: var(--r); overflow: hidden; cursor: pointer;
+  transition: transform .32s cubic-bezier(.34,1.56,.64,1), box-shadow .32s, border-color .32s;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 32px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(244,63,110,0.28);
+  border-color: rgba(244,63,110,0.28);
+}
+
+.card-thumb { position: relative; overflow: hidden; }
+.card-thumb img {
+  width: 100%; height: 272px; object-fit: cover; display: block;
+  transition: transform .48s ease;
+}
+.card:hover .card-thumb img { transform: scale(1.08); }
+
+.card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+  opacity: 0; transition: opacity .3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.card:hover .card-overlay { opacity: 1; }
+
+.play-btn {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(244,63,110,0.9);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; padding-left: 4px;
+  box-shadow: 0 0 36px rgba(244,63,110,0.7);
+  transform: scale(0.6); transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.card:hover .play-btn { transform: scale(1); }
+
+.badge {
+  position: absolute; top: 10px; left: 10px;
+  font-size: 0.58rem; font-weight: 700; padding: 3px 9px;
+  border-radius: 20px; letter-spacing: .8px; text-transform: uppercase; color: #fff;
+}
+.badge.completed    { background: linear-gradient(135deg, #4338ca, #6d28d9); }
+.badge.ongoing      { background: linear-gradient(135deg, #065f46, #059669); }
+.badge.classic      { background: linear-gradient(135deg, #92400e, #b45309); }
+.badge.film         { background: linear-gradient(135deg, #0e7490, #0891b2); }
+.badge.coming-soon  { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+
+/* "Tez kunda" kartalar overlay */
+.card.no-partner {
+  cursor: pointer;
+}
+.card.no-partner .card-thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
+  border-radius: 0;
+  pointer-events: none;
+}
+.card.no-partner .play-btn {
+  opacity: 0.4;
+}
+
+/* No-partner modal */
+#noPartnerModal {
+  display: none;
+  position: fixed; inset: 0; z-index: 9995;
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+}
+#noPartnerModal.open { display: flex; }
+.no-partner-box {
+  background: var(--ink3);
+  border: 1px solid rgba(244,63,110,0.25);
+  border-radius: 20px;
+  padding: 40px 36px;
+  max-width: 360px; width: 90%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.7);
+  animation: modal-pop .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes modal-pop { from{transform:scale(.85);opacity:0} to{transform:scale(1);opacity:1} }
+.no-partner-icon { font-size: 2.8rem; margin-bottom: 16px; }
+.no-partner-box h3 {
+  font-size: 1.05rem; font-weight: 700; color: #fff;
+  margin-bottom: 10px; line-height: 1.4;
+}
+.no-partner-box p {
+  font-size: 0.82rem; color: var(--sub); line-height: 1.6; margin-bottom: 24px;
+}
+.no-partner-close {
+  display: inline-block;
+  padding: 10px 28px; border-radius: 30px;
+  background: linear-gradient(135deg, var(--rose), #f97316);
+  color: #fff; font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; border: none; font-family: inherit;
+  transition: opacity .2s;
+}
+.no-partner-close:hover { opacity: 0.85; }
+
+.no-link-tag {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px; padding: 2px 8px;
+  font-size: 0.57rem; color: var(--amber); font-weight: 600;
+}
+
+.card-info { padding: 13px 14px 15px; }
+.card-info h3 {
+  font-size: 0.87rem; font-weight: 700;
+  margin-bottom: 8px; line-height: 1.35; color: #fff;
+}
+.meta { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 9px; }
+.meta span {
+  font-size: 0.62rem; color: var(--sub);
+  background: rgba(255,255,255,0.05); padding: 2px 7px; border-radius: 8px;
+}
+.stars { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; }
+.stars .s { color: var(--amber); letter-spacing: -1px; }
+.stars .n { color: var(--sub); font-size: 0.7rem; font-weight: 600; }
+
+/* ═══════════════════════════════════════════
+   CARD INLINE AD — yulduzcha ostidagi mini reklama
+═══════════════════════════════════════════ */
+.card-ad {
+  margin-top: 9px;
+  border-top: 1px solid var(--line);
+  padding-top: 7px;
+  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+  min-height: 28px;
+  cursor: default;
+}
+.card-ad-label {
+  font-size: 0.52rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--dim);
+  background: rgba(255,255,255,0.04);
+  padding: 2px 6px; border-radius: 6px;
+  flex-shrink: 0;
+}
+.card-ad-slot {
+  flex: 1; height: 24px; max-height: 24px; min-height: 24px;
+  background: rgba(244,63,110,0.04);
+  border: 1px dashed rgba(244,63,110,0.15);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.52rem; color: var(--dim); letter-spacing: 0.5px;
+  overflow: hidden; white-space: nowrap;
+}
+.card-ad-slot ins { max-height: 24px !important; height: 24px !important; }
+
+/* ═══════════════════════════════════════════
+   IN-GRID AD
+═══════════════════════════════════════════ */
+.ad-card {
+  background: var(--ink3); border: 1px dashed rgba(244,63,110,0.18);
+  border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.ad-card ins { width: 100% !important; height: 100% !important; min-height: 260px; }
+
+/* ═══════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════ */
+.sidebar { padding: 22px 0 72px 24px; display: flex; flex-direction: column; gap: 20px; }
+.sidebar-card {
+  background: var(--ink3); border: 1px solid var(--line);
+  border-radius: var(--r); overflow: hidden;
+}
+.sidebar-title {
+  padding: 13px 16px 10px;
+  font-size: 0.72rem; font-weight: 700; color: var(--sub);
+  text-transform: uppercase; letter-spacing: 1.2px;
+  border-bottom: 1px solid var(--line);
+}
+.ad-slot-sidebar { min-height: 250px; display: flex; align-items: center; justify-content: center; }
+.top-list { padding: 6px 0; }
+.top-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 14px; cursor: pointer; transition: background .18s;
+}
+.top-item:hover { background: rgba(255,255,255,0.04); }
+.top-num { font-size: 0.72rem; font-weight: 800; color: var(--rose); width: 16px; flex-shrink: 0; }
+.top-img { width: 36px; height: 48px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+.top-info h4 { font-size: 0.77rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.top-info small { font-size: 0.63rem; color: var(--dim); }
+
+/* ── TOP RATING ROW WITH 2 INLINE ADS ── */
+.top-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 10px; cursor: pointer; transition: background .18s;
+}
+.top-item:hover { background: rgba(255,255,255,0.04); }
+.top-item-left { display: flex; align-items: center; gap: 7px; flex: 1; min-width: 0; }
+.top-ads-group { display: flex; gap: 4px; flex-shrink: 0; }
+.top-ad-square {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, rgba(244,63,110,0.06), rgba(249,115,22,0.04));
+  border: 1px dashed rgba(244,63,110,0.22);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative; flex-shrink: 0;
+}
+.top-ad-square ins { display: block; width: 50px; height: 50px; }
+.top-ad-square-placeholder {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; width: 100%; height: 100%;
+  color: rgba(244,63,110,0.4); text-align: center; padding: 3px;
+  user-select: none;
+}
+.top-ad-num {
+  font-size: 0.44rem; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; color: rgba(244,63,110,0.5);
+}
+/* TOP LIST ORASIDAGI GORIZONTAL BANNER */
+.top-between-ad {
+  margin: 2px 10px 2px;
+  background: linear-gradient(135deg, rgba(244,63,110,0.06), rgba(249,115,22,0.04));
+  border: 1px dashed rgba(244,63,110,0.22);
+  border-radius: 8px;
+  height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.top-between-ad ins { display: block; width: 100%; height: 48px; }
+.top-between-ad-placeholder {
+  display: flex; align-items: center; gap: 6px;
+  color: rgba(244,63,110,0.4); font-size: 0.52rem;
+  user-select: none; pointer-events: none;
+}
+.top-between-ad-placeholder span {
+  background: rgba(244,63,110,0.08); padding: 2px 7px; border-radius: 20px;
+  font-size: 0.48rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(244,63,110,0.5);
+}
+
+/* ═══════════════════════════════════════════
+   BOTTOM AD + FOOTER
+═══════════════════════════════════════════ */
+.ad-bottom-bar {
+  margin: 0 clamp(16px, 4vw, 52px) 28px;
+  background: linear-gradient(135deg, rgba(244,63,110,0.05), rgba(249,115,22,0.03));
+  border: 1px dashed rgba(244,63,110,0.18);
+  border-radius: var(--r); min-height: 90px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px clamp(16px, 4vw, 52px);
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 20px;
+}
+@media (max-width: 600px) { footer { grid-template-columns: 1fr; text-align: center; } }
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #fff; }
+.footer-logo em { color: var(--rose2); font-style: italic; }
+.footer-copy { font-size: 0.74rem; color: var(--dim); margin-top: 4px; }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; justify-content: flex-end; }
+.footer-links a { color: var(--sub); text-decoration: none; font-size: 0.78rem; transition: color .2s; }
+.footer-links a:hover { color: var(--rose2); }
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+#_toast {
+  position: fixed; bottom: 90px; left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: linear-gradient(135deg, var(--rose), #f97316);
+  color: #fff; padding: 11px 26px; border-radius: 30px;
+  font-size: 0.84rem; font-weight: 600;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 9999;
+  opacity: 0; transition: all .3s ease; pointer-events: none; white-space: nowrap;
+}
+
+.card.hidden { display: none !important; }
+
+/* ═══════════════════════════════════════════
+   TELEGRAM FLOAT BUTTON — DESKTOP
+═══════════════════════════════════════════ */
+.tg-float {
+  position: fixed; bottom: 32px; right: 32px; z-index: 9990;
+  text-decoration: none;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.tg-rings { position: absolute; width: 64px; height: 64px; border-radius: 50%; pointer-events: none; }
+.tg-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid rgba(42,171,238,0.55);
+  animation: tg-wave 3.2s ease-out infinite;
+}
+.tg-ring:nth-child(1) { animation-delay: 0s; }
+.tg-ring:nth-child(2) { animation-delay: 0.55s; }
+.tg-ring:nth-child(3) { animation-delay: 1.1s; }
+.tg-ring:nth-child(4) { animation-delay: 1.65s; }
+.tg-ring:nth-child(5) { animation-delay: 2.2s; }
+
+.tg-btn {
+  position: relative; z-index: 2;
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(145deg, #35b8f1, #1a96cb);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(27,150,203,0.6), 0 2px 8px rgba(0,0,0,0.35);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  animation: tg-pulse 2.8s ease-in-out infinite;
+}
+.tg-float:hover .tg-btn {
+  transform: scale(1.1);
+  box-shadow: 0 12px 40px rgba(27,150,203,0.75), 0 2px 8px rgba(0,0,0,0.4);
+}
+.tg-btn svg { width: 32px; height: 32px; fill: #fff; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3)); }
+
+.tg-tip {
+  position: absolute; right: calc(100% + 14px); top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(8,12,22,0.95); border: 1px solid rgba(42,171,238,0.25);
+  border-radius: 24px; color: #fff; font-family: 'Sora', sans-serif;
+  font-size: 0.76rem; font-weight: 600; white-space: nowrap; padding: 8px 15px;
+  opacity: 0; pointer-events: none; transition: opacity .22s, transform .22s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+}
+.tg-tip::after {
+  content: ''; position: absolute; right: -7px; top: 50%; transform: translateY(-50%);
+  border: 6px solid transparent; border-left-color: rgba(8,12,22,0.95); border-right-width: 0;
+}
+.tg-float:hover .tg-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+.tg-badge {
+  position: absolute; top: -4px; right: -4px;
+  background: linear-gradient(135deg, var(--rose), #7c3aed);
+  color: #fff; font-size: 0.6rem; font-weight: 800;
+  padding: 2px 6px; border-radius: 10px; border: 2px solid var(--ink);
+  letter-spacing: 0.3px; z-index: 3;
+  animation: badge-pop 0.5s cubic-bezier(.34,1.56,.64,1) 1s both;
+}
+
+@keyframes tg-wave { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(3.2);opacity:0} }
+@keyframes tg-pulse {
+  0%,100%{box-shadow:0 8px 28px rgba(27,150,203,.6),0 2px 8px rgba(0,0,0,.35)}
+  50%{box-shadow:0 8px 40px rgba(27,150,203,.85),0 2px 8px rgba(0,0,0,.35)}
+}
+@keyframes badge-pop { from{transform:scale(0)} to{transform:scale(1)} }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+
+/* ═══════════════════════════════════════════
+   MOBILE TELEGRAM BOTTOM BAR
+═══════════════════════════════════════════ */
+
+/* Desktop: hidden mobile bar, show float */
+.tg-mobile-bar { display: none; }
+.tg-float { display: flex; }
+
+@media (max-width: 768px) {
+  /* Hide desktop float on mobile */
+  .tg-float { display: none !important; }
+
+  /* Show mobile bar */
+  .tg-mobile-bar {
+    display: flex !important;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 9990;
+    padding: 10px 16px 16px;
+    background: rgba(6, 8, 16, 0.97);
+    backdrop-filter: blur(20px) saturate(160%);
+    border-top: 1px solid rgba(42,171,238,0.2);
+  }
+
+  .tg-mobile-link {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    flex: 1; height: 54px;
+    background: linear-gradient(135deg, #2AABEE 0%, #1585c4 100%);
+    border-radius: 14px; text-decoration: none; color: #fff;
+    font-family: 'Sora', sans-serif; font-size: 0.92rem; font-weight: 700;
+    box-shadow: 0 4px 22px rgba(42,171,238,0.45);
+    position: relative; overflow: hidden;
+  }
+  .tg-mobile-link::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    animation: shimmer 2.8s ease-in-out infinite;
+  }
+
+  .tg-mobile-icon {
+    position: relative; width: 30px; height: 30px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tg-mobile-icon svg {
+    width: 30px; height: 30px; fill: #fff; position: relative; z-index: 1;
+    display: block;
+  }
+  .tg-mobile-ring {
+    position: absolute; inset: -3px;
+    border: 2px solid rgba(255,255,255,0.55);
+    border-radius: 50%;
+    animation: mob-ring 2s ease-out infinite;
+  }
+  .tg-mobile-ring:nth-child(1) { animation-delay: 0s; }
+  .tg-mobile-ring:nth-child(2) { animation-delay: 0.65s; }
+  .tg-mobile-ring:nth-child(3) { animation-delay: 1.3s; }
+
+  .tg-mobile-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .tg-mobile-text strong { font-size: 0.92rem; font-weight: 800; }
+  .tg-mobile-text span { font-size: 0.67rem; font-weight: 500; opacity: 0.82; }
+  .tg-mobile-arrow { font-size: 1.1rem; margin-left: auto; padding-right: 2px; }
+
+  footer { padding-bottom: 100px; }
+  .ad-bottom-bar { margin-bottom: 100px; }
+  #_toast { bottom: 100px; }
+
+  .grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 14px; }
+  .card-thumb img { height: 235px; }
+  .hero { padding: 44px 16px 32px; }
+
+  @keyframes shimmer { 0%{left:-100%} 55%{left:150%} 100%{left:150%} }
+  @keyframes mob-ring { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(2.8);opacity:0} }
+}
+
+@media (max-width: 420px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card-thumb img { height: 210px; }
+}
+
+/* ═══════════════════════════════════════════
+   FLOATING ROTATING AD WIDGET — TOP RIGHT
+═══════════════════════════════════════════ */
+.float-ad-widget {
+  position: fixed;
+  top: 88px; right: 24px;
+  z-index: 8500;
+  width: 200px;
+}
+
+.float-ad-inner {
+  position: relative;
+  background: var(--ink3);
+  border: 1px solid var(--line2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(244,63,110,0.12);
+}
+
+/* Close button */
+.float-ad-close {
+  position: absolute; top: 7px; right: 7px; z-index: 3;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(10,12,18,0.85);
+  border: 1px solid var(--line2);
+  color: var(--sub); font-size: 0.65rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-family: inherit;
+  transition: background .2s, color .2s;
+  line-height: 1;
+}
+.float-ad-close:hover { background: rgba(244,63,110,0.3); color: #fff; border-color: rgba(244,63,110,0.5); }
+
+/* Ad slot */
+.float-ad-slot {
+  width: 100%; height: 160px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.float-ad-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  padding: 12px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.float-ad-content.visible { opacity: 1; }
+.float-ad-content.exiting { opacity: 0; }
+
+/* Progress bar at bottom */
+.float-ad-progress {
+  height: 3px;
+  background: var(--line2);
+}
+.float-ad-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose), #f97316);
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* Label strip */
+.float-ad-label-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 10px 7px 12px;
+  border-top: 1px solid var(--line);
+}
+.float-ad-label-text {
+  font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.2px; color: var(--dim);
+}
+.float-ad-counter {
+  font-size: 0.62rem; font-weight: 600; color: var(--dim);
+}
+
+/* Entrance animation */
+@keyframes float-ad-in {
+  from { opacity: 0; transform: translateY(-12px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.float-ad-widget {
+  animation: float-ad-in .45s cubic-bezier(.34,1.56,.64,1) both;
+}
+.float-ad-widget.hidden {
+  display: none;
+}
+
+/* Mobile: slightly smaller, stays top-right */
+@media (max-width: 768px) {
+  .float-ad-widget {
+    top: 122px; right: 12px;
+    width: 160px;
+  }
+  .float-ad-slot { height: 130px; }
+}
+
+/* ═══════════════════════════════════════════
+   STICKY NAVBAR MOBILE AD (320×50)
+═══════════════════════════════════════════ */
+.navbar-mobile-ad {
+  display: none;
+}
+@media (max-width: 768px) {
+  .navbar-mobile-ad {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 50px;
+    background: linear-gradient(135deg, rgba(244,63,110,0.06), rgba(249,115,22,0.04));
+    border-bottom: 1px solid rgba(244,63,110,0.15);
+    position: sticky; top: 64px; z-index: 299;
+    overflow: hidden;
+  }
+  .navbar-mobile-ad .ad-placeholder {
+    flex-direction: row; gap: 10px; padding: 8px 16px;
+  }
+  .navbar-mobile-ad .ad-placeholder span:not(.ad-label) { font-size: 0.7rem; color: var(--dim); }
+}
+
+/* ═══════════════════════════════════════════
+   STICKY DESKTOP FOOTER BAR (728×90)
+═══════════════════════════════════════════ */
+.sticky-footer-ad {
+  display: none;
+}
+@media (min-width: 769px) {
+  .sticky-footer-ad {
+    display: flex; align-items: center; justify-content: center;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 90px; z-index: 8000;
+    background: rgba(10,12,18,0.97);
+    backdrop-filter: blur(20px) saturate(160%);
+    border-top: 1px solid rgba(244,63,110,0.18);
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+  }
+  .sticky-footer-ad-inner {
+    width: min(728px, 96vw); height: 90px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, rgba(244,63,110,0.06), rgba(249,115,22,0.04));
+    border: 1px dashed rgba(244,63,110,0.2);
+    border-radius: var(--r); position: relative;
+  }
+  .sticky-footer-close {
+    position: absolute; top: 6px; right: 10px;
+    background: rgba(255,255,255,0.08); border: none; border-radius: 50%;
+    width: 20px; height: 20px; cursor: pointer; color: var(--sub);
+    font-size: 0.7rem; display: flex; align-items: center; justify-content: center;
+    transition: background .2s; font-family: inherit;
+  }
+  .sticky-footer-close:hover { background: rgba(244,63,110,0.3); color: #fff; }
+  /* Push page content above sticky bar */
+  footer { padding-bottom: 118px; }
+  .ad-bottom-bar { margin-bottom: 24px; }
+}
+
+/* ═══════════════════════════════════════════
+   INTERSTITIAL OVERLAY
+═══════════════════════════════════════════ */
+.interstitial-overlay {
+  position: fixed; inset: 0; z-index: 99999;
+  background: rgba(5,7,14,0.97);
+  backdrop-filter: blur(16px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s ease;
+}
+.interstitial-overlay.active {
+  opacity: 1; pointer-events: all;
+}
+.interstitial-box {
+  width: min(520px, 94vw);
+  background: var(--ink3);
+  border: 1px solid var(--line2);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.8);
+  position: relative;
+  transform: scale(0.92);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.interstitial-overlay.active .interstitial-box { transform: scale(1); }
+
+.interstitial-top {
+  background: linear-gradient(135deg, rgba(244,63,110,0.08), rgba(249,115,22,0.05));
+  border-bottom: 1px solid var(--line);
+  padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.interstitial-label {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--dim);
+}
+.interstitial-timer-wrap {
+  display: flex; align-items: center; gap: 8px;
+}
+.interstitial-skip-btn {
+  background: linear-gradient(135deg, var(--rose), #f97316);
+  border: none; border-radius: 20px;
+  color: #fff; font-family: inherit; font-size: 0.75rem; font-weight: 700;
+  padding: 6px 16px; cursor: pointer;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .2s;
+  white-space: nowrap;
+}
+.interstitial-skip-btn.visible { opacity: 1; pointer-events: all; }
+.interstitial-skip-btn:hover { transform: scale(1.04); }
+
+.interstitial-countdown {
+  font-size: 0.75rem; font-weight: 700; color: var(--sub);
+  min-width: 64px; text-align: right;
+}
+
+.interstitial-ad-zone {
+  height: 280px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(244,63,110,0.04), rgba(249,115,22,0.02));
+}
+.interstitial-ad-zone .ad-placeholder { gap: 8px; }
+
+.interstitial-progress {
+  height: 3px;
+  background: var(--line2);
+}
+.interstitial-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose), #f97316);
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform linear;
+}
+
+/* ═══════════════════════════════════════════
+   VIDEO PRE-ROLL
+═══════════════════════════════════════════ */
+.preroll-overlay {
+  position: fixed; inset: 0; z-index: 99998;
+  background: rgba(5,7,14,0.98);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.preroll-overlay.active {
+  opacity: 1; pointer-events: all;
+}
+.preroll-box {
+  width: min(640px, 96vw);
+  background: #000;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.9);
+  position: relative;
+}
+.preroll-video-zone {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #0a0c12, #161c2e);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.preroll-video-zone::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent 0px, transparent 3px,
+    rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+  );
+}
+.preroll-play-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(244,63,110,0.15);
+  border: 2px solid rgba(244,63,110,0.35);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; padding-left: 6px;
+  position: relative; z-index: 1;
+  animation: preroll-pulse 2s ease-in-out infinite;
+}
+@keyframes preroll-pulse {
+  0%,100%{box-shadow:0 0 0 0 rgba(244,63,110,0.4)}
+  50%{box-shadow:0 0 0 18px rgba(244,63,110,0)}
+}
+.preroll-ad-tag {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px; padding: 3px 10px;
+  font-size: 0.62rem; font-weight: 700; color: var(--sub);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.preroll-bar {
+  background: rgba(10,12,18,0.95);
+  padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.preroll-info { flex: 1; }
+.preroll-info strong { font-size: 0.78rem; color: #fff; display: block; }
+.preroll-info small { font-size: 0.66rem; color: var(--sub); }
+.preroll-actions { display: flex; align-items: center; gap: 10px; }
+.preroll-skip-btn {
+  background: rgba(255,255,255,0.08); border: 1px solid var(--line2);
+  border-radius: 20px; color: #fff; font-family: inherit;
+  font-size: 0.73rem; font-weight: 600; padding: 6px 14px;
+  cursor: pointer; transition: background .2s;
+  opacity: 0; pointer-events: none;
+  white-space: nowrap;
+}
+.preroll-skip-btn.visible { opacity: 1; pointer-events: all; }
+.preroll-skip-btn:hover { background: rgba(244,63,110,0.25); border-color: rgba(244,63,110,0.4); }
+.preroll-timer {
+  font-size: 0.72rem; font-weight: 700; color: var(--sub);
+  min-width: 52px; text-align: right;
+}
+.preroll-progress {
+  height: 3px; background: rgba(255,255,255,0.1);
+}
+.preroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose), #f97316);
+  width: 100%; transform-origin: left;
+  transition: transform linear;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ════════════════════════════════════════════════════════════ -->
+<header class="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">🎬</div>
+    Drama<em>Hub</em>
+  </a>
+  <div class="nav-center">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Serial yoki film qidiring..." oninput="doSearch(this.value)">
+  </div>
+  <a class="nav-tg-btn" href="https://t.me/dramalarolami_2026" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
+    Kanal
+  </a>
+</header>
+
+<!-- ═══ STICKY MOBILE AD BAR (320×50) ════════════════════════════════════ -->
+<div class="navbar-mobile-ad">
+    <ins class="adsbygoogle" style="display:block;width:100%;height:50px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="4326306122" data-ad-format="auto"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+<div class="hero-wrapper">
+
+  <!-- Chap reklama -->
+  <div class="hero-side-ad left">
+    <ins class="adsbygoogle"
+         style="display:block;width:160px;height:160px"
+         data-ad-client="ca-pub-3750617152736872"
+         data-ad-slot="1853701392"
+         data-ad-format="auto"></ins>
+    <div class="hero-side-ad-placeholder">
+      <span class="ad-label">Reklama</span>
+      <span>160 × 160</span>
+      <small>HERO-LEFT-AD</small>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-mesh"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      🇺🇿 O'zbek tilida
+    </div>
+    <h1>Koreya Seriallari<br><span>HD Sifatda</span></h1>
+    <p>Eng ommabop Koreya dramalarini yuqori sifatda, o'zbek tilida bepul tomosha qiling</p>
+    <div class="hero-kpis">
+      <div class="kpi"><span class="kpi-val">10+</span><span class="kpi-lbl">Drama & Film</span></div>
+      <div class="kpi"><span class="kpi-val">HD</span><span class="kpi-lbl">Sifat</span></div>
+      <div class="kpi"><span class="kpi-val">O'zbek</span><span class="kpi-lbl">Tilida</span></div>
+      <div class="kpi"><span class="kpi-val">Bepul</span><span class="kpi-lbl">Kirish</span></div>
+    </div>
+  </section>
+
+  <!-- O'ng reklama -->
+  <div class="hero-side-ad right">
+    <ins class="adsbygoogle"
+         style="display:block;width:160px;height:160px"
+         data-ad-client="ca-pub-3750617152736872"
+         data-ad-slot="6681006727"
+         data-ad-format="auto"></ins>
+    <div class="hero-side-ad-placeholder">
+      <span class="ad-label">Reklama</span>
+      <span>160 × 160</span>
+      <small>HERO-RIGHT-AD</small>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ AD — LEADERBOARD standard (728×90) ══════════════════════════════ -->
+<div class="ad-banner hero-leaderboard-standard" style="margin:18px clamp(16px,4vw,52px); min-height:90px;">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="3926320644" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ═══ AD — LEADERBOARD wide (970×90) desktop only ════════════════════ -->
+<div class="hero-leaderboard-wide">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="3400237269" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ═══ FILTER BAR ════════════════════════════════════════════════════════ -->
+<div class="filter-section">
+  <div class="section-title">Barcha seriallar</div>
+  <div class="filter-pills">
+    <button class="fpill active" onclick="filter('all',this)">🎬 Barchasi</button>
+    <button class="fpill" onclick="filter('romance',this)">❤️ Romantika</button>
+    <button class="fpill" onclick="filter('action',this)">⚔️ Aksion</button>
+    <button class="fpill" onclick="filter('fantasy',this)">✨ Fantastika</button>
+    <button class="fpill" onclick="filter('thriller',this)">🔪 Triller</button>
+  </div>
+</div>
+
+<!-- ═══ MOBILE AD — FILTER OSTI (320×50) ═══════════════════════════════ -->
+<div class="mobile-filter-ad">
+  <ins class="adsbygoogle"
+       style="display:block;width:100%;height:50px"
+       data-ad-client="ca-pub-3750617152736872"
+       data-ad-slot="6409543989"
+       data-ad-format="auto"></ins>
+  <div class="ad-placeholder" style="height:50px;flex-direction:row;gap:10px">
+    <span class="ad-label">Reklama</span>
+    <span style="font-size:.62rem;color:var(--dim)">320 × 50 — Mobile only</span>
+  </div>
+</div>
+
+<!-- ═══ MAIN LAYOUT ═══════════════════════════════════════════════════════ -->
+<div class="page-layout">
+
+  <!-- TV CHAP RAIL 1 (1920px+) -->
+  <aside class="tv-ad-rail-l1">
+    <div class="tv-rail-ad tv-rail-600">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:600px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="5601374715" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="tv-rail-ad tv-rail-250">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:250px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="9165215209" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
+
+  <!-- TV CHAP RAIL 2 (1920px+) -->
+  <aside class="tv-ad-rail-l2">
+    <div class="tv-rail-ad tv-rail-300">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:300px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="8844135636" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="tv-rail-ad tv-rail-160">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:160px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="4517877814" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="tv-rail-ad tv-rail-300">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:300px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="4904890622" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
+
+  <!-- LEFT AD RAIL — desktop only -->
+  <aside class="ad-rail-left">
+    <!-- 160×600 Wide Skyscraper -->
+    <div class="rail-ad rail-ad-160x600">
+      <ins class="adsbygoogle"
+           style="display:block;width:160px;height:100%"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="3204796148"
+           data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <!-- 160×160 small square -->
+    <div class="rail-ad rail-ad-160x160">
+      <ins class="adsbygoogle"
+           style="display:block;width:160px;height:100%"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="9349048032"
+           data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
+
+  <!-- CARD GRID -->
+  <div class="grid" id="grid">
+
+    <!-- 1. Vincenzo -->
+    <div class="card" data-genre="action thriller" data-title="vincenzo" onclick="go('vincenzo')">
+      <div class="card-thumb">
+        <img src="https://static.kinoafisha.info/k/series_posters/1920x1080/upload/series/posters/6/2/7/6726/583012361672318527.jpg" alt="Vincenzo" loading="lazy">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+      </div>
+      <div class="card-info">
+        <h3>Vincenzo</h3>
+        <div class="meta"><span>2021</span><span>20 qism</span><span>Aksion</span></div>
+        <div class="stars"><span class="s">★★★★★</span><span class="n">9.1</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="9165215209"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Bahoriy hislar -->
+    <div class="card" data-genre="romance" data-title="bahoriy hislar" onclick="window.open('http://uzmovi.me/seriall/6750-bahoriy-hislar-1-2-3-4-5-6-7-8-9-10-11-12-15-qism-koreya-serial-uzbek-tilida-barcha-qismlar-2025-hd.html','_blank')">
+      <div class="card-thumb">
+        <img src="https://uzkino.ru/uploads/posts/2026-01/photo_2026-01-07_22-09-17.jpg" alt="Bahoriy hislar" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Bahoriy+Hislar'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge ongoing">Yangi</span>
+      </div>
+      <div class="card-info">
+        <h3>Bahoriy hislar</h3>
+        <div class="meta"><span>2025</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.2</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="8844135636"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Do'zaxdan kelgan sudya -->
+    <div class="card" data-genre="fantasy thriller" data-title="dozaxdan kelgan sudya" onclick="go('sudya')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=d0c39c88e8ccfdb0501279147e68b56e04e74586-10511592-images-thumbs&n=13" alt="Dozaxdan kelgan sudya" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Sudya'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+      </div>
+      <div class="card-info">
+        <h3>Do'zaxdan kelgan sudya</h3>
+        <div class="meta"><span>2024</span><span>16 qism</span><span>Fantastika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.5</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="4517877814"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-GRID AD 1 -->
+    <div class="ad-card" data-ad="true">
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;height:260px"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="7865565657"
+           data-ad-format="auto"
+           ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 4. To'qqiz dumli tulki -->
+    <div class="card" data-genre="fantasy romance" data-title="toqqiz dumli tulki" onclick="go('tulki')">
+      <div class="card-thumb">
+        <img src="https://ih1.redbubble.net/image.5300975857.6787/fposter,small,wall_texture,square_product,600x600.jpg" alt="Toqqiz dumli tulki" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Tulki'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+      </div>
+      <div class="card-info">
+        <h3>To'qqiz dumli tulki</h3>
+        <div class="meta"><span>2020</span><span>16 qism</span><span>Fantastika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.3</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="4904890622"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Mening iblisim -->
+    <div class="card" data-genre="fantasy romance" data-title="mening iblisim" onclick="go('iblis')">
+      <div class="card-thumb">
+        <img src="https://uzmovee.net/uploads/posts/2024-01/1706256657_mening-iblisim.webp" alt="Mening iblisim" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=My+Demon'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+      </div>
+      <div class="card-info">
+        <h3>Mening iblisim</h3>
+        <div class="meta"><span>2023</span><span>16 qism</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.0</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="3204796148"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. YouTuber sinf -->
+    <div class="card" data-genre="romance" data-title="youtuber sinf" onclick="go('youtuber')">
+      <div class="card-thumb">
+        <img src="https://i.pinimg.com/736x/c9/7f/12/c97f1235302d7b8c1a8d53cad2ee8f06.jpg" alt="YouTuber sinf" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=YouTuber'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+      </div>
+      <div class="card-info">
+        <h3>YouTuber sinf</h3>
+        <div class="meta"><span>2023</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">7.9</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="9349048032"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-GRID AD 2 -->
+    <div class="ad-card" data-ad="true">
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;height:260px"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="6552483981"
+           data-ad-format="auto"
+           ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 7. 20-asr qizi -->
+    <div class="card" data-genre="romance" data-title="20 asr qizi" onclick="go('20asr')">
+      <div class="card-thumb">
+        <img src="https://basket-31.wbbasket.ru/vol6258/part625840/625840670/images/big/1.webp" alt="20-asr qizi" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=20th+Century'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge film">Film</span>
+      </div>
+      <div class="card-info">
+        <h3>20-asr qizi</h3>
+        <div class="meta"><span>2022</span><span>Film</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★★</span><span class="n">9.0</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="7865565657"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Goblin -->
+    <div class="card" data-genre="fantasy romance" data-title="goblin" onclick="go('goblin')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=b87e5936b97d7545ef1c262d20a1d3d0086c7a23-3975511-images-thumbs&n=13" alt="Goblin" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Goblin'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge classic">Klassik</span>
+      </div>
+      <div class="card-info">
+        <h3>Goblin</h3>
+        <div class="meta"><span>2016</span><span>16 qism</span><span>Fantastika</span></div>
+        <div class="stars"><span class="s">★★★★★</span><span class="n">9.4</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="6552483981"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Yoshlik bahori -->
+    <div class="card" data-genre="romance action" data-title="yoshlik bahori" onclick="go('cloy')">
+      <div class="card-thumb">
+        <img src="https://i.pinimg.com/736x/45/d4/dc/45d4dc9fbce1fc97c2ff9546cc6718bd.jpg" alt="Crash Landing on You" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Crash+Landing'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge classic">Klassik</span>
+        <span class="no-link-tag"></span>
+      </div>
+      <div class="card-info">
+        <h3>Yoshlik bahori</h3>
+        <div class="meta"><span>2019</span><span>10 qism</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★★</span><span class="n">9.2</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="2278727284"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-GRID AD 3 -->
+    <div class="ad-card" data-ad="true">
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;height:260px"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="2278727284"
+           data-ad-format="auto"
+           ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 10. Ajoyib advokat Woo -->
+    <div class="card" data-genre="thriller" data-title="ajoyib advokat woo" onclick="go('woo')">
+      <div class="card-thumb">
+        <img src="https://ru-images-s.kinorium.com/movie/1080/9566977.jpg?1687164137" alt="Ajoyib advokat Woo" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Attorney+Woo'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+        <span class="no-link-tag"></span>
+      </div>
+      <div class="card-info">
+        <h3>Ajoyib advokat Woo</h3>
+        <div class="meta"><span>2022</span><span>16 qism</span><span>Drama</span></div>
+        <div class="stars"><span class="s">★★★★★</span><span class="n">8.9</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="9578632804"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Biznes taklif -->
+    <div class="card" data-genre="romance" data-title="biznes taklif" onclick="go('proposal')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=2e15066157528a84e0286490e48d7ccabd1477ff-12382358-images-thumbs&n=13" alt="Biznes taklif" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Business+Proposal'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+        <span class="no-link-tag"></span>
+      </div>
+      <div class="card-info">
+        <h3>Biznes taklif</h3>
+        <div class="meta"><span>2022</span><span>12 qism</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.1</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="5225970194"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. Jin tilak tila -->
+    <div class="card" data-genre="thriller action" data-title="jin tilak tila" onclick="go('squid')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=88cd87081c1121ad34b73e6221aeeb653c8dfc11-5581143-images-thumbs&n=13" alt="Squid Game" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/f43f6e?text=Squid+Game'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+        <span class="no-link-tag"></span>
+      </div>
+      <div class="card-info">
+        <h3>Jin tilak tila</h3>
+        <div class="meta"><span>2021</span><span>13 qism</span><span>Triller</span></div>
+        <div class="stars"><span class="s">★★★★★</span><span class="n">9.5</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="2741761715"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-GRID AD 4 -->
+    <div class="ad-card" data-ad="true">
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;height:260px"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="9578632804"
+           data-ad-format="auto"
+           ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 13. Iblis bo'sasi  -->
+    <div class="card no-partner" data-genre="thriller action" data-title="iblis bo'sasi" onclick="go('iblis')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=64ac6d7cef8bb1d4b7d271fe7f924250f98b45a0-10247323-images-thumbs&n=13" alt="Iblis bazasi" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/a855f7?text=Iblis+Bazasi'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge coming-soon"></span>
+      </div>
+      <div class="card-info">
+        <h3>Iblis bo'sasi</h3>
+        <div class="meta"><span>2022</span><span>10 qism</span><span>Triller</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.6</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="5239402311"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. Vorislar -->
+    <div class="card no-partner" data-genre="romance drama" data-title="vorislar" onclick="go('vorislar')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=4fd845068e8913d21c81b312484f1c17a68a80df-4074117-images-thumbs&n=13" alt="Vorislar" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/a855f7?text=Vorislar'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge coming-soon"></span>
+      </div>
+      <div class="card-info">
+        <h3>Vorislar</h3>
+        <div class="meta"><span>2013</span><span>20 qism</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.3</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="8973643514"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. Guldan go'zal yigitlar  -->
+    <div class="card no-partner" data-genre="romance comedy" data-title="guldan gozal yigitlar" onclick="go('gul')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=eecf4f773f488a8983f160dcab03de02a9c74ed8-13265158-images-thumbs&n=13" alt="Guldan go'zal yigitlar" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/a855f7?text=Boys+Over+Flowers'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge coming-soon"></span>
+      </div>
+      <div class="card-info">
+        <h3>Guldan go'zal yigitlar</h3>
+        <div class="meta"><span>2009</span><span>25 qism</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.4</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="5639387790"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-GRID AD 5 -->
+    <div class="ad-card" data-ad="true">
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;height:260px"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="5225970194"
+           data-ad-format="auto"
+           ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 16. Aqldan ozgan ammo hammasi joyida  -->
+    <div class="card no-partner" data-genre="romance comedy" data-title="aqldan ozgan ammo hammasi joyida" onclick="go('aql')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=a3eda24675f9ff9da8637df0174322e7871c7a0c-5349727-images-thumbs&n=13" alt="Aqldan ozgan ammo hammasi joyida" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/a855f7?text=Its+Okay+Not+Okay'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge coming-soon"></span>
+      </div>
+      <div class="card-info">
+        <h3>Aqldan ozgan ammo hammasi joyida</h3>
+        <div class="meta"><span>2020</span><span>16 qism</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★★</span><span class="n">8.9</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="9157476342"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. Xotirasiz sevgi — Tez kunda -->
+    <div class="card" data-genre="romance" data-title="xotirasiz sevgi" onclick="go('xotira')">
+      <div class="card-thumb">
+        <img src="https://avatars.mds.yandex.net/i?id=0b12e1b0ac5c6cb9c7f5d0a24b9d19c42635efc2-4239007-images-thumbs&n=13" alt="Xotirasiz sevgi" loading="lazy" onerror="this.src='https://placehold.co/185x280/13191f/a855f7?text=Xotirasiz+Sevgi'">
+        <div class="card-overlay"><div class="play-btn">▶</div></div>
+        <span class="badge completed">Tugagan</span>
+      </div>
+      <div class="card-info">
+        <h3>Xotirasiz sevgi</h3>
+        <div class="meta"><span>2021</span><span>16 qism</span><span>Romantika</span></div>
+        <div class="stars"><span class="s">★★★★☆</span><span class="n">8.2</span></div>
+        <div class="card-ad" onclick="event.stopPropagation()">
+          <span class="card-ad-label">Ad</span>
+          <div class="card-ad-slot"><ins class="adsbygoogle" style="display:inline-block;width:180px;height:28px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="7660561845"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="2741761715"
+             data-ad-format="auto"
+             ></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">🏆 Top reytingli</div>
+      <div class="top-list" id="topList"></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar" style="min-height:300px">
+        <ins class="adsbygoogle" style="display:block;width:100%;height:250px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="9774073923" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </div>
+
+    <!-- Sidebar — qo'shimcha 300×250 -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="5239402311"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+    <!-- Sidebar — 300×100 kichik banner -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="8973643514"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="5639387790"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="9157476342"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="7660561845"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="4326306122"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    
+    <div class="sidebar-card">
+      <div class="sidebar-title">📢 Reklama</div>
+      <div class="ad-slot-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;height:100px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="3926320644"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- RIGHT AD RAIL — desktop only -->
+  <aside class="ad-rail-right">
+    <!-- 160×600 Wide Skyscraper -->
+    <div class="rail-ad rail-ad-160x600">
+      <ins class="adsbygoogle"
+           style="display:block;width:160px;height:100%"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="3400237269"
+           data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <!-- 160×320 half skyscraper -->
+    <div class="rail-ad rail-ad-160x320">
+      <ins class="adsbygoogle"
+           style="display:block;width:160px;height:100%"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="9774073923"
+           data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
+
+  <!-- TV O'NG RAIL 1 (1920px+) -->
+  <aside class="tv-ad-rail-r1">
+    <div class="tv-rail-ad tv-rail-600">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:600px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="6760897770" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="tv-rail-ad tv-rail-250">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:250px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="7147910582" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
+
+  <!-- TV O'NG RAIL 2 (1920px+) -->
+  <aside class="tv-ad-rail-r2">
+    <div class="tv-rail-ad tv-rail-300">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:300px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="8965904656" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="tv-rail-ad tv-rail-160">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:160px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="1508571092" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="tv-rail-ad tv-rail-300">
+      <ins class="adsbygoogle" style="display:block;width:220px;height:300px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="3866610894" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
+
+</div><!-- /page-layout -->
+
+<!-- ═══ MOBILE POST-GRID AD (320×100) ════════════════════════════════════ -->
+<div class="mobile-postgrid-ad">
+  <ins class="adsbygoogle"
+       style="display:block;width:100%;height:100px"
+       data-ad-client="ca-pub-3750617152736872"
+       data-ad-slot="7673993963"
+       data-ad-format="auto"></ins>
+  <div class="ad-placeholder" style="height:100px;flex-direction:row;gap:10px">
+    <span class="ad-label">Reklama</span>
+    <span style="font-size:.62rem;color:var(--dim)">320 × 100 — Mobile post-grid</span>
+  </div>
+</div>
+
+<!-- ═══ BILLBOARD AD (970×250) — desktop only ════════════════════════════ -->
+<div class="billboard-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:250px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="7652822988" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- ═══ DESKTOP INTER-FOOTER AD (728×90) ═══════════════════════════════ -->
+<div class="desktop-inter-footer-ad">
+  <ins class="adsbygoogle"
+       style="display:block;width:100%;height:90px"
+       data-ad-client="ca-pub-3750617152736872"
+       data-ad-slot="6339741315"
+       data-ad-format="auto"></ins>
+  <div class="ad-placeholder" style="height:90px;flex-direction:row;gap:10px">
+    <span class="ad-label">Reklama</span>
+    <span style="font-size:.62rem;color:var(--dim)">728 × 90 — Desktop inter-footer</span>
+  </div>
+</div>
+
+<!-- ═══ TV EXTRA LEADERBOARD (1920px+) ══════════════════════════════════ -->
+<div class="tv-extra-leaderboard" style="display:none">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:120px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="6760897770" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ═══ BOTTOM AD BAR ════════════════════════════════════════════════════ -->
+<div class="ad-bottom-bar">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="7147910582" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div>
+    <div class="footer-logo">Drama<em>Hub</em> 🎬</div>
+    <div class="footer-copy">Vista | Barcha huquqlar himoyalangan © 2026</div>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Bosh sahifa</a>
+    <a href="index.html#grid">Seriallar</a>
+    <a href="index.html#grid">Filmlar</a>
+    <a href="https://t.me/dramalarolami_2026" target="_blank" rel="noopener">Aloqa</a>
+  </div>
+</footer>
+
+<div id="_toast"></div>
+
+<!-- ═══ FLOATING ROTATING AD WIDGET — TOP RIGHT ══════════════════════════ -->
+<div class="float-ad-widget" id="floatAdWidget">
+  <div class="float-ad-inner">
+    <button class="float-ad-close" onclick="closeFloatAd()" aria-label="Yopish">✕</button>
+    <div class="float-ad-slot">
+      <div class="float-ad-content visible" id="floatAdContent">
+        <ins class="adsbygoogle" style="display:block;width:200px;height:160px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="1853701392" data-ad-format="auto"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </div>
+    <div class="float-ad-progress">
+      <div class="float-ad-progress-bar" id="floatAdBar"></div>
+    </div>
+    <div class="float-ad-label-row">
+      <span class="float-ad-label-text">Reklama</span>
+      <span class="float-ad-counter" id="floatAdCounter">10s</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TELEGRAM FLOAT BUTTON — DESKTOP ══════════════════════════════════ -->
+<a class="tg-float" href="https://t.me/dramalarolami_2026" target="_blank" rel="noopener" aria-label="Telegram kanalimiz">
+  <div class="tg-rings">
+    <div class="tg-ring"></div>
+    <div class="tg-ring"></div>
+    <div class="tg-ring"></div>
+    <div class="tg-ring"></div>
+    <div class="tg-ring"></div>
+  </div>
+  <div class="tg-btn">
+    <div class="tg-badge">KANAL</div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
+  </div>
+  <div class="tg-tip">📢 Telegram kanalimiz</div>
+</a>
+
+<!-- ═══ TELEGRAM BUTTON — MOBILE BOTTOM BAR ══════════════════════════════ -->
+<div class="tg-mobile-bar">
+  <a class="tg-mobile-link" href="https://t.me/dramalarolami_2026" target="_blank" rel="noopener">
+    <div class="tg-mobile-icon">
+      <div class="tg-mobile-ring"></div>
+      <div class="tg-mobile-ring"></div>
+      <div class="tg-mobile-ring"></div>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+      </svg>
+    </div>
+    <div class="tg-mobile-text">
+      <strong>Telegram kanalimiz</strong>
+      <span>Yangi seriallar haqida xabardor bo'ling</span>
+    </div>
+    <span class="tg-mobile-arrow">›</span>
+  </a>
+</div>
+
+<!-- ═══ STICKY DESKTOP FOOTER AD BAR (728×90) ════════════════════════════ -->
+<div class="sticky-footer-ad" id="stickyFooterAd">
+  <div class="sticky-footer-ad-inner">
+    <button class="sticky-footer-close" onclick="document.getElementById('stickyFooterAd').style.display='none'" aria-label="Yopish">✕</button>
+    
+    <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="4904890622" data-ad-format="auto"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+</div>
+
+<!-- ═══ NO-PARTNER MODAL ════════════════════════════════════════════════ -->
+<div id="noPartnerModal">
+  <div class="no-partner-box">
+    <div class="no-partner-icon">🎬</div>
+    <h3>Ayni damda bu dramani namoyish eta olmaymiz!</h3>
+    <p>Hozirda bu drama uchun namoyish huquqiga ega hamkorimiz mavjud emas. Tez orada qo'shiladi!</p>
+    <button class="no-partner-close" onclick="document.getElementById('noPartnerModal').classList.remove('open')">Tushunarli</button>
+  </div>
+</div>
+
+<!-- ═══ INTERSTITIAL OVERLAY ════════════════════════════════════════════ -->
+<div class="interstitial-overlay" id="interstitialOverlay">
+  <div class="interstitial-box">
+    <div class="interstitial-top">
+      <span class="interstitial-label">📢 Reklama</span>
+      <div class="interstitial-timer-wrap">
+        <span class="interstitial-countdown" id="interstitialCountdown">5 soniyada o'tadi</span>
+        <button class="interstitial-skip-btn" id="interstitialSkipBtn" onclick="closeInterstitial()">O'tkazib yuborish ›</button>
+      </div>
+    </div>
+    <div class="interstitial-ad-zone">
+      <ins class="adsbygoogle" style="display:block;width:480px;height:280px" data-ad-client="ca-pub-3750617152736872" data-ad-slot="1853701392" data-ad-format="auto"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+    <div class="interstitial-progress">
+      <div class="interstitial-progress-bar" id="interstitialBar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VIDEO PRE-ROLL OVERLAY ══════════════════════════════════════════ -->
+<div class="preroll-overlay" id="prerollOverlay">
+  <div class="preroll-box">
+    <div class="preroll-progress">
+      <div class="preroll-progress-bar" id="prerollBar"></div>
+    </div>
+    <div class="preroll-video-zone">
+      <span class="preroll-ad-tag">📢 Reklama</span>
+      <div class="preroll-play-icon">▶</div>
+    </div>
+    <div class="preroll-bar">
+      <div class="preroll-info">
+        <strong>Reklama ko'rilmoqda...</strong>
+        <small>AdSense Video Pre-roll — shu yerga kod joylang</small>
+      </div>
+      <div class="preroll-actions">
+        <span class="preroll-timer" id="prerollCountdown">5 son</span>
+        <button class="preroll-skip-btn" id="prerollSkipBtn" onclick="closePreroll()">⏭ O'tkazib yuborish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── LINKS ──────────────────────────────────────────────────────────────── */
+const links = {
+  vincenzo: 'https://uzbeklar.biz/7309-vinchenzo.html',
+  sudya:    'http://uzmovi.me/seriall/4963-dozoxdan-kelgan-sudya-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-qism-uzbek-tilida-koreya-seriali-barcha-qismlar-2024.html',
+  tulki:    'http://uzmovi.me/seriall/1547-toqqiz-dumli-tulki-haqida-afsona-1-17-18-19-20-21-22-23-24-25-qism-korea-serial-uzbek-tilida.html',
+  iblis:    'http://uzmovi.me/seriall/2296-mening-iblisim-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-20-30-40-qism-koreya-seriali-uzbek-tilida.html',
+  youtuber: 'https://uzbeklar.biz/7736-youtubchilar-sinfi.html',
+  '20asr':  'https://uzbeklar.biz/7172-20-asr-qizi.html',
+  goblin:   'https://playuz.net/seriallar_2025/654-goblin-1-3-5-7-9-11-13-14-16-qism-uzbek-tilida-koreya-serial-2016-barcha-qismlar-tarjima-serial-uzbekcha-skachat.html',
+  cloy:     'https://idup.tv/drama-uzbek-tilida/940-yoshlik-bahori-koreya-seriali-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-qism-uzbek-tilida-barcha-qismlar-2025-hd.html',
+  woo:      'https://asilmedia.org/17679-garoyib-advokat-gayrioddiy-advokat-u-vu-yong-vu-barcha-qismlar-2022-uzbek-tilida-ozbekcha-tarjima-kino-full-hd-tas-ix-skachat.html',
+  proposal: 'https://playuz.net/seriallar_2025/491-biznes-taklifi-2022-serial-koreys-seriali-uzbek-tilida-barcha-qismlar.html',
+  squid:    'http://uzmovi.me/seriall/6443-jin-tilak-tila-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-qism-koreya-seriali-uzbek-tilida-barcha-qismlar-2025-hd-skachat.html',
+  iblis:    'https://kinochilar.com/tarjima-seriallar/13123-iblis-bo%E2%80%99sasi-barcha-qismlar-uzbek-tilida/episode/1.html?ysclid=mpt5741fry133314033',
+  vorislar: 'https://freekino.net/serial/183-vorislar?ysclid=mpt5vshs9z963033923',
+  gul:      'https://kinolar.tv/load/drama/guldan_go_39_zal_yigitlar_barcha_qismlar_koreys_serial_uzbek_tilida_2009_serial_skachat/15-1-0-4848?ysclid=mpt62bryvf237932704',
+  aql:      'https://kino7777.com/38-aqldan-ozgan-ammo-hammasi-joyda-koreya-seriali-uzbek-tilida-2020-barcha-qismlar-720-hd-yuklab-olish/episode/1.html',
+  xotira:   'https://mohidub.net/38-xotirasiz-sevgi-2023-koreya-kinosi-ozbek-tilida.html',
+};
+
+function showNoPartner() {
+  document.getElementById('noPartnerModal').classList.add('open');
+}
+
+// Modal tashqarisiga bosish bilan yopish
+document.getElementById('noPartnerModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+function go(key) {
+  const url = links[key];
+  if (!url) { toast("Bu drama uchun link hali qo'shilmagan ⏳"); return; }
+  showPreroll(url);
+}
+
+/* ── INTERSTITIAL ───────────────────────────────────────────────────────── */
+let interstitialPending = null;
+let interstitialTimer = null;
+
+function showInterstitial(url) {
+  interstitialPending = url;
+  const overlay = document.getElementById('interstitialOverlay');
+  const countdown = document.getElementById('interstitialCountdown');
+  const skipBtn = document.getElementById('interstitialSkipBtn');
+  const bar = document.getElementById('interstitialBar');
+
+  skipBtn.classList.remove('visible');
+  bar.style.transition = 'none';
+  bar.style.transform = 'scaleX(1)';
+  overlay.classList.add('active');
+
+  let secs = 5;
+  countdown.textContent = secs + ' soniyada o\'tadi';
+
+  requestAnimationFrame(() => {
+    bar.style.transition = 'transform ' + secs + 's linear';
+    bar.style.transform = 'scaleX(0)';
+  });
+
+  interstitialTimer = setInterval(() => {
+    secs--;
+    if (secs <= 0) {
+      clearInterval(interstitialTimer);
+      countdown.textContent = 'O\'tkazib yuborish';
+      skipBtn.classList.add('visible');
+    } else {
+      countdown.textContent = secs + ' soniyada o\'tadi';
+      if (secs <= 3) skipBtn.classList.add('visible');
+    }
+  }, 1000);
+}
+
+function closeInterstitial() {
+  clearInterval(interstitialTimer);
+  const overlay = document.getElementById('interstitialOverlay');
+  overlay.classList.remove('active');
+  if (interstitialPending) {
+    const url = interstitialPending;
+    interstitialPending = null;
+    window.open(url, '_blank');
+  }
+}
+
+/* ── VIDEO PRE-ROLL ─────────────────────────────────────────────────────── */
+let prerollPending = null;
+let prerollTimer = null;
+
+function showPreroll(url) {
+  prerollPending = url;
+  const overlay = document.getElementById('prerollOverlay');
+  const countdown = document.getElementById('prerollCountdown');
+  const skipBtn = document.getElementById('prerollSkipBtn');
+  const bar = document.getElementById('prerollBar');
+
+  skipBtn.classList.remove('visible');
+  bar.style.transition = 'none';
+  bar.style.transform = 'scaleX(1)';
+  overlay.classList.add('active');
+
+  let secs = 5;
+  countdown.textContent = secs + ' son';
+
+  requestAnimationFrame(() => {
+    bar.style.transition = 'transform ' + secs + 's linear';
+    bar.style.transform = 'scaleX(0)';
+  });
+
+  prerollTimer = setInterval(() => {
+    secs--;
+    if (secs <= 0) {
+      clearInterval(prerollTimer);
+      countdown.textContent = '0 son';
+      skipBtn.classList.add('visible');
+    } else {
+      countdown.textContent = secs + ' son';
+      if (secs <= 3) skipBtn.classList.add('visible');
+    }
+  }, 1000);
+}
+
+function closePreroll() {
+  clearInterval(prerollTimer);
+  const overlay = document.getElementById('prerollOverlay');
+  overlay.classList.remove('active');
+  if (prerollPending) {
+    const url = prerollPending;
+    prerollPending = null;
+    window.open(url, '_blank');
+  }
+}
+
+/* ── TOAST ──────────────────────────────────────────────────────────────── */
+function toast(msg) {
+  const t = document.getElementById('_toast');
+  t.textContent = msg;
+  t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => {
+    t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(16px)';
+  }, 2600);
+}
+
+/* ── FILTER ─────────────────────────────────────────────────────────────── */
+function filter(genre, btn) {
+  document.querySelectorAll('.fpill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#grid .card').forEach(c => {
+    const g = c.dataset.genre || '';
+    c.classList.toggle('hidden', genre !== 'all' && !g.includes(genre));
+  });
+}
+
+/* ── SEARCH ─────────────────────────────────────────────────────────────── */
+function doSearch(q) {
+  const v = q.toLowerCase().trim();
+  document.querySelectorAll('#grid .card').forEach(c => {
+    const t = (c.dataset.title || '').toLowerCase();
+    c.classList.toggle('hidden', v !== '' && !t.includes(v));
+  });
+  if (v) {
+    document.querySelectorAll('.fpill').forEach(b => b.classList.remove('active'));
+    document.querySelector('.fpill').classList.add('active');
+  }
+}
+
+/* ── FLOATING ROTATING AD WIDGET ────────────────────────────────────────── */
+(function() {
+  const INTERVAL = 10; // seconds per ad
+  let remaining = INTERVAL;
+  let adIndex = 0;
+  let ticker = null;
+
+  // Ad "slots" — replace content array with real ad codes
+  const ads = [
+    { label: 'Reklama 1', size: '200 × 160', note: 'AdSense kodi 1' },
+    { label: 'Reklama 2', size: '200 × 160', note: 'AdSense kodi 2' },
+    { label: 'Reklama 3', size: '200 × 160', note: 'AdSense kodi 3' },
+  ];
+
+  const widget  = document.getElementById('floatAdWidget');
+  const content = document.getElementById('floatAdContent');
+  const bar     = document.getElementById('floatAdBar');
+  const counter = document.getElementById('floatAdCounter');
+
+  function renderAd(idx) {
+    const ad = ads[idx % ads.length];
+    content.innerHTML = `
+      <div class="ad-placeholder" style="gap:6px;padding:8px">
+        <span class="ad-label">Reklama</span>
+        <span style="font-size:.68rem;color:var(--dim)">${ad.size}</span>
+        <small style="font-size:.6rem;color:var(--dim)">${ad.note}</small>
+      </div>`;
+  }
+
+  function startBar() {
+    bar.style.transition = 'none';
+    bar.style.transform  = 'scaleX(1)';
+    // force reflow
+    bar.offsetWidth;
+    bar.style.transition = 'transform ' + INTERVAL + 's linear';
+    bar.style.transform  = 'scaleX(0)';
+  }
+
+  function tick() {
+    remaining--;
+    counter.textContent = remaining + 's';
+    if (remaining <= 0) {
+      remaining = INTERVAL;
+      adIndex++;
+      // fade out → swap → fade in
+      content.classList.add('exiting');
+      setTimeout(() => {
+        renderAd(adIndex);
+        content.classList.remove('exiting');
+        content.classList.add('visible');
+        startBar();
+        counter.textContent = INTERVAL + 's';
+      }, 400);
+    }
+  }
+
+  // Init
+  renderAd(0);
+  startBar();
+  ticker = setInterval(tick, 1000);
+
+  window.closeFloatAd = function() {
+    clearInterval(ticker);
+    widget.classList.add('hidden');
+  };
+})();
+
+
+// Top reytingli dramalar — barcha dramalar ro'yxatidan reyting bo'yicha avtomatik tartiblanadi
+const allDramasPool = [
+  { title:'Jin tilak tila',      year:'2021', rating:9.5, img:'https://avatars.mds.yandex.net/i?id=88cd87081c1121ad34b73e6221aeeb653c8dfc11-5581143-images-thumbs&n=13', key:'squid' },
+  { title:'Goblin',              year:'2016', rating:9.4, img:'https://avatars.mds.yandex.net/i?id=b87e5936b97d7545ef1c262d20a1d3d0086c7a23-3975511-images-thumbs&n=13', key:'goblin' },
+  { title:'Yoshlik bahori',      year:'2019', rating:9.2, img:'https://i.pinimg.com/736x/45/d4/dc/45d4dc9fbce1fc97c2ff9546cc6718bd.jpg', key:'cloy' },
+  { title:'Vincenzo',            year:'2021', rating:9.1, img:'https://static.kinoafisha.info/k/series_posters/1920x1080/upload/series/posters/6/2/7/6726/583012361672318527.jpg', key:'vincenzo' },
+  { title:'20-asr qizi',         year:'2022', rating:9.0, img:'https://basket-31.wbbasket.ru/vol6258/part625840/625840670/images/big/1.webp', key:'20asr' },
+  { title:'Dozoxdan kelgan sudya',year:'2024', rating:8.8, img:'https://avatars.mds.yandex.net/i?id=2e2e9e89e4e76ce79cfde2be7c2f46d3-5232176-images-thumbs&n=13', key:'sudya' },
+  { title:'Ajoyib advokat Woo',  year:'2022', rating:8.9, img:'https://avatars.mds.yandex.net/i?id=2a72f24f7f0a4c4c47b82b9a0e65b2c2a1b0c3d1-5123456-images-thumbs&n=13', key:'woo' },
+  { title:'Biznes taklif',       year:'2022', rating:8.1, img:'https://avatars.mds.yandex.net/i?id=2e15066157528a84e0286490e48d7ccabd1477ff-12382358-images-thumbs&n=13', key:'proposal' },
+];
+
+// Reyting bo'yicha kamayish tartibida saralash (avtomatik)
+const topData = [...allDramasPool].sort((a, b) => b.rating - a.rating).slice(0, 5);
+
+// AdSense slot ID lari — har bir qator uchun 2 ta slot (A va B)
+const topAdSlots = [
+  ['5047830627', '5026659648'],
+  ['3713577973', '7882407754'],
+  ['2553529229', '6569326087'],
+  ['5256244411', '3943162745'],
+  ['3863271690', '2630081072'],
+];
+
+const tl = document.getElementById('topList');
+topData.forEach((d, i) => {
+  const el = document.createElement('div');
+  el.className = 'top-item';
+  el.onclick = () => go(d.key);
+  el.innerHTML = `
+    <div class="top-item-left">
+      <span class="top-num">${i+1}</span>
+      <img class="top-img" src="${d.img}" alt="${d.title}" onerror="this.style.background='#161b28'">
+      <div class="top-info"><h4>${d.title}</h4><small>⭐ ${d.rating.toFixed(1)} · ${d.year}</small></div>
+    </div>
+    <div class="top-ads-group" onclick="event.stopPropagation()">
+      <div class="top-ad-square">
+        <ins class="adsbygoogle"
+             style="display:block;width:50px;height:50px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="${topAdSlots[i][0]}"
+             data-ad-format="auto"></ins>
+        <div class="top-ad-square-placeholder">
+          <span class="top-ad-num">AD</span>
+          <span style="font-size:.4rem;color:var(--dim)">50×50</span>
+        </div>
+      </div>
+      <div class="top-ad-square">
+        <ins class="adsbygoogle"
+             style="display:block;width:50px;height:50px"
+             data-ad-client="ca-pub-3750617152736872"
+             data-ad-slot="${topAdSlots[i][1]}"
+             data-ad-format="auto"></ins>
+        <div class="top-ad-square-placeholder">
+          <span class="top-ad-num">AD</span>
+          <span style="font-size:.4rem;color:var(--dim)">50×50</span>
+        </div>
+      </div>
+    </div>
+  `;
+  tl.appendChild(el);
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+
+  // Har ikkita drama orasiga keng gorizontal banner (oxirgisidan keyin emas)
+  if (i < topData.length - 1) {
+    const band = document.createElement('div');
+    band.className = 'top-between-ad';
+    band.innerHTML = `
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;height:48px"
+           data-ad-client="ca-pub-3750617152736872"
+           data-ad-slot="9195489424"
+           data-ad-format="auto"></ins>
+      <div class="top-between-ad-placeholder">
+        <span>Reklama</span>
+        <span style="font-size:.45rem;color:var(--dim);background:none;padding:0">TOP-BETWEEN-AD-${i+1}</span>
+      </div>
+    `;
+    tl.appendChild(band);
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  }
+});
+</script>
+</body>
+</html>
